@@ -1,0 +1,23 @@
+[0.631s] Invoking command in '/home/dunto/roboComs/src/roboCom': PYTHONPATH=/home/dunto/roboComs/install/roboCom/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/roboCom build --build-base /home/dunto/roboComs/build/roboCom/build install --prefix /home/dunto/roboComs/install/roboCom --record /home/dunto/roboComs/build/roboCom/install.log --single-version-externally-managed
+[0.841s] running egg_info
+[0.842s] writing ../../build/roboCom/roboCom.egg-info/PKG-INFO
+[0.842s] writing dependency_links to ../../build/roboCom/roboCom.egg-info/dependency_links.txt
+[0.843s] writing entry points to ../../build/roboCom/roboCom.egg-info/entry_points.txt
+[0.843s] writing requirements to ../../build/roboCom/roboCom.egg-info/requires.txt
+[0.843s] writing top-level names to ../../build/roboCom/roboCom.egg-info/top_level.txt
+[0.876s] reading manifest file '../../build/roboCom/roboCom.egg-info/SOURCES.txt'
+[0.877s] writing manifest file '../../build/roboCom/roboCom.egg-info/SOURCES.txt'
+[0.878s] running build
+[0.878s] running build_py
+[0.878s] running install
+[0.879s] running install_lib
+[0.880s] running install_data
+[0.881s] copying resource/roboCom -> /home/dunto/roboComs/install/roboCom/share/ament_index/resource_index/packages
+[0.881s] copying package.xml -> /home/dunto/roboComs/install/roboCom/share/roboCom
+[0.881s] running install_egg_info
+[0.883s] Copying ../../build/roboCom/roboCom.egg-info to /home/dunto/roboComs/install/roboCom/lib/python3.8/site-packages/roboCom-0.0.1-py3.8.egg-info
+[0.884s] running install_scripts
+[0.901s] Installing controller script to /home/dunto/roboComs/install/roboCom/lib/roboCom
+[0.901s] Installing robot script to /home/dunto/roboComs/install/roboCom/lib/roboCom
+[0.901s] writing list of installed files to '/home/dunto/roboComs/build/roboCom/install.log'
+[0.931s] Invoked command in '/home/dunto/roboComs/src/roboCom' returned '0': PYTHONPATH=/home/dunto/roboComs/install/roboCom/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/roboCom build --build-base /home/dunto/roboComs/build/roboCom/build install --prefix /home/dunto/roboComs/install/roboCom --record /home/dunto/roboComs/build/roboCom/install.log --single-version-externally-managed

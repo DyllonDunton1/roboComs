@@ -1,0 +1,4 @@
+[console_scripts]
+controller = roboCom.controllerCom:main
+robot = roboCom.robotCom:main
+

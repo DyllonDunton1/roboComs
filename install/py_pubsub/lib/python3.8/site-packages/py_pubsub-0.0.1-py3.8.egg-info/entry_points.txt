@@ -1,0 +1,4 @@
+[console_scripts]
+listener = py_pubsub.robotCom:main
+talker = py_pubsub.controllerCom:main
+

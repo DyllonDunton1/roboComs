@@ -1,0 +1,25 @@
+[1.157s] Invoking command in '/home/dunto/demo_ws/src/py_pubsub': PYTHONPATH=/home/dunto/demo_ws/install/py_pubsub/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/py_pubsub build --build-base /home/dunto/demo_ws/build/py_pubsub/build install --prefix /home/dunto/demo_ws/install/py_pubsub --record /home/dunto/demo_ws/build/py_pubsub/install.log --single-version-externally-managed
+[1.456s] running egg_info
+[1.457s] writing ../../build/py_pubsub/py_pubsub.egg-info/PKG-INFO
+[1.457s] writing dependency_links to ../../build/py_pubsub/py_pubsub.egg-info/dependency_links.txt
+[1.476s] writing entry points to ../../build/py_pubsub/py_pubsub.egg-info/entry_points.txt
+[1.476s] writing requirements to ../../build/py_pubsub/py_pubsub.egg-info/requires.txt
+[1.476s] writing top-level names to ../../build/py_pubsub/py_pubsub.egg-info/top_level.txt
+[1.514s] reading manifest file '../../build/py_pubsub/py_pubsub.egg-info/SOURCES.txt'
+[1.515s] writing manifest file '../../build/py_pubsub/py_pubsub.egg-info/SOURCES.txt'
+[1.515s] running build
+[1.520s] running build_py
+[1.520s] copying py_pubsub/subscriber_member_function.py -> /home/dunto/demo_ws/build/py_pubsub/build/lib/py_pubsub
+[1.520s] running install
+[1.531s] running install_lib
+[1.531s] copying /home/dunto/demo_ws/build/py_pubsub/build/lib/py_pubsub/subscriber_member_function.py -> /home/dunto/demo_ws/install/py_pubsub/lib/python3.8/site-packages/py_pubsub
+[1.533s] byte-compiling /home/dunto/demo_ws/install/py_pubsub/lib/python3.8/site-packages/py_pubsub/subscriber_member_function.py to subscriber_member_function.cpython-38.pyc
+[1.534s] running install_data
+[1.534s] running install_egg_info
+[1.534s] removing '/home/dunto/demo_ws/install/py_pubsub/lib/python3.8/site-packages/py_pubsub-0.0.1-py3.8.egg-info' (and everything under it)
+[1.534s] Copying ../../build/py_pubsub/py_pubsub.egg-info to /home/dunto/demo_ws/install/py_pubsub/lib/python3.8/site-packages/py_pubsub-0.0.1-py3.8.egg-info
+[1.534s] running install_scripts
+[1.556s] Installing listener script to /home/dunto/demo_ws/install/py_pubsub/lib/py_pubsub
+[1.556s] Installing talker script to /home/dunto/demo_ws/install/py_pubsub/lib/py_pubsub
+[1.558s] writing list of installed files to '/home/dunto/demo_ws/build/py_pubsub/install.log'
+[1.581s] Invoked command in '/home/dunto/demo_ws/src/py_pubsub' returned '0': PYTHONPATH=/home/dunto/demo_ws/install/py_pubsub/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/py_pubsub build --build-base /home/dunto/demo_ws/build/py_pubsub/build install --prefix /home/dunto/demo_ws/install/py_pubsub --record /home/dunto/demo_ws/build/py_pubsub/install.log --single-version-externally-managed

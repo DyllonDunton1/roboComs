@@ -1,0 +1,6 @@
+source;share/roboCom/hook/pythonpath.ps1
+source;share/roboCom/hook/pythonpath.dsv
+source;share/roboCom/hook/pythonpath.sh
+source;share/roboCom/hook/ament_prefix_path.ps1
+source;share/roboCom/hook/ament_prefix_path.dsv
+source;share/roboCom/hook/ament_prefix_path.sh

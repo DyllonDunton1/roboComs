@@ -1,0 +1,28 @@
+running egg_info
+writing ../../build/roboCom/roboCom.egg-info/PKG-INFO
+writing dependency_links to ../../build/roboCom/roboCom.egg-info/dependency_links.txt
+writing entry points to ../../build/roboCom/roboCom.egg-info/entry_points.txt
+writing requirements to ../../build/roboCom/roboCom.egg-info/requires.txt
+writing top-level names to ../../build/roboCom/roboCom.egg-info/top_level.txt
+reading manifest file '../../build/roboCom/roboCom.egg-info/SOURCES.txt'
+writing manifest file '../../build/roboCom/roboCom.egg-info/SOURCES.txt'
+running build
+running build_py
+copying roboCom/robotCom.py -> /home/dunto/roboComs/build/roboCom/build/lib/roboCom
+copying roboCom/controllerCom.py -> /home/dunto/roboComs/build/roboCom/build/lib/roboCom
+running install
+running install_lib
+copying /home/dunto/roboComs/build/roboCom/build/lib/roboCom/robotCom.py -> /home/dunto/roboComs/install/roboCom/lib/python3.8/site-packages/roboCom
+copying /home/dunto/roboComs/build/roboCom/build/lib/roboCom/controllerCom.py -> /home/dunto/roboComs/install/roboCom/lib/python3.8/site-packages/roboCom
+byte-compiling /home/dunto/roboComs/install/roboCom/lib/python3.8/site-packages/roboCom/robotCom.py to robotCom.cpython-38.pyc
+Sorry: TabError: inconsistent use of tabs and spaces in indentation (robotCom.py, line 55)
+byte-compiling /home/dunto/roboComs/install/roboCom/lib/python3.8/site-packages/roboCom/controllerCom.py to controllerCom.cpython-38.pyc
+Sorry: TabError: inconsistent use of tabs and spaces in indentation (controllerCom.py, line 150)
+running install_data
+running install_egg_info
+removing '/home/dunto/roboComs/install/roboCom/lib/python3.8/site-packages/roboCom-0.0.1-py3.8.egg-info' (and everything under it)
+Copying ../../build/roboCom/roboCom.egg-info to /home/dunto/roboComs/install/roboCom/lib/python3.8/site-packages/roboCom-0.0.1-py3.8.egg-info
+running install_scripts
+Installing controller script to /home/dunto/roboComs/install/roboCom/lib/roboCom
+Installing robot script to /home/dunto/roboComs/install/roboCom/lib/roboCom
+writing list of installed files to '/home/dunto/roboComs/build/roboCom/install.log'
