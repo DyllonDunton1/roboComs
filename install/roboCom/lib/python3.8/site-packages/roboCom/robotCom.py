@@ -18,6 +18,9 @@ from rclpy.node import Node
 from std_msgs.msg import String
 
 
+import serial
+import time
+
 """
 Publisher Data Format:
 
@@ -49,6 +52,12 @@ class RobotPubSub(Node):
         self.doorLatch = True
         self.wheelRight = False
         self.wheelLeft = False
+        
+        self.dataRecieved = ""
+        self.dataSent = ""
+        
+        self.arduino = serial.Serial('COM3', 9600)
+        time.sleep(2)
                 
     def timer_callback(self):
         msgType = "tfData*"
@@ -63,34 +72,21 @@ class RobotPubSub(Node):
         keys = msg.data
         keys_split = keys.split('*')
         if (keys_split[0] == 'keyData'):
-            boolsAll = keys_split[1].split(',')
-            bools = boolsAll[0].split(' ')
     		
-            speed_left = 0
-            speed_right = 0
-
-            if (bools[0] == 'True'):
-                speed_left += .50
-                speed_right += .50
-            if (bools[1] == 'True'):
-                speed_left -= .50
-                speed_right -= .50
-            if (bools[2] == 'True'):
-                speed_left -= .40
-                speed_right += .40
-            if (bools[3] == 'True'):
-                speed_left += .40
-                speed_right -= .40            
-        
-            pwm_left = (speed_left * self.max) + self.base
-            pwm_right = (speed_right * self.max) + self.base
-        
-            pwms = str(pwm_left) + "  |  " + str(pwm_right)
-        
-            #self.servo.setTarget(0,pwm_left)
-            #self.servo.setTarget(0,pwm_left)
+            self.dataRecieved = self.arduino.readLine()
+            
+            dataRecieved_split = self.dataRecieved.split(' ')
+            
+            self.boomPos = dataRecieved_split[0]
+            self.augerSpin = dataRecieved_split[1]
+            self.augerHeight = dataRecieved_split[2]
+            self.doorLatch = dataRecieved_split[3]
+            self.wheelRight = dataRecieved_split[4]
+            self.wheelLeft = dataRecieved_split[5]
+            
+            self.arduino.write(keys_split[1])
     	
-            self.get_logger().info(pwms)
+            self.get_logger().info(self.dataRecieved)
 
 
 def main(args=None):
