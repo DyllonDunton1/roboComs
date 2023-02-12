@@ -1,0 +1,25 @@
+[0.593s] Invoking command in '/home/dunto/Lunabotics/roboComs/src/roboCom': PYTHONPATH=/home/dunto/Lunabotics/roboComs/install/roboCom/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/roboCom build --build-base /home/dunto/Lunabotics/roboComs/build/roboCom/build install --prefix /home/dunto/Lunabotics/roboComs/install/roboCom --record /home/dunto/Lunabotics/roboComs/build/roboCom/install.log --single-version-externally-managed
+[0.800s] running egg_info
+[0.800s] writing ../../build/roboCom/roboCom.egg-info/PKG-INFO
+[0.803s] writing dependency_links to ../../build/roboCom/roboCom.egg-info/dependency_links.txt
+[0.803s] writing entry points to ../../build/roboCom/roboCom.egg-info/entry_points.txt
+[0.803s] writing requirements to ../../build/roboCom/roboCom.egg-info/requires.txt
+[0.803s] writing top-level names to ../../build/roboCom/roboCom.egg-info/top_level.txt
+[0.832s] reading manifest file '../../build/roboCom/roboCom.egg-info/SOURCES.txt'
+[0.833s] writing manifest file '../../build/roboCom/roboCom.egg-info/SOURCES.txt'
+[0.833s] running build
+[0.833s] running build_py
+[0.833s] copying roboCom/controllerCom.py -> /home/dunto/Lunabotics/roboComs/build/roboCom/build/lib/roboCom
+[0.834s] running install
+[0.834s] running install_lib
+[0.835s] copying /home/dunto/Lunabotics/roboComs/build/roboCom/build/lib/roboCom/controllerCom.py -> /home/dunto/Lunabotics/roboComs/install/roboCom/lib/python3.8/site-packages/roboCom
+[0.836s] byte-compiling /home/dunto/Lunabotics/roboComs/install/roboCom/lib/python3.8/site-packages/roboCom/controllerCom.py to controllerCom.cpython-38.pyc
+[0.841s] running install_data
+[0.841s] running install_egg_info
+[0.843s] removing '/home/dunto/Lunabotics/roboComs/install/roboCom/lib/python3.8/site-packages/roboCom-0.0.1-py3.8.egg-info' (and everything under it)
+[0.843s] Copying ../../build/roboCom/roboCom.egg-info to /home/dunto/Lunabotics/roboComs/install/roboCom/lib/python3.8/site-packages/roboCom-0.0.1-py3.8.egg-info
+[0.844s] running install_scripts
+[0.862s] Installing controller script to /home/dunto/Lunabotics/roboComs/install/roboCom/lib/roboCom
+[0.862s] Installing robot script to /home/dunto/Lunabotics/roboComs/install/roboCom/lib/roboCom
+[0.862s] writing list of installed files to '/home/dunto/Lunabotics/roboComs/build/roboCom/install.log'
+[0.884s] Invoked command in '/home/dunto/Lunabotics/roboComs/src/roboCom' returned '0': PYTHONPATH=/home/dunto/Lunabotics/roboComs/install/roboCom/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/roboCom build --build-base /home/dunto/Lunabotics/roboComs/build/roboCom/build install --prefix /home/dunto/Lunabotics/roboComs/install/roboCom --record /home/dunto/Lunabotics/roboComs/build/roboCom/install.log --single-version-externally-managed

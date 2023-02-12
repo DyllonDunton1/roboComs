@@ -11,7 +11,6 @@ setup.py
 resource/roboCom
 roboCom/__init__.py
 roboCom/controllerCom.py
-roboCom/publisher_member_function.py
 roboCom/robotCom.py
 test/test_copyright.py
 test/test_flake8.py

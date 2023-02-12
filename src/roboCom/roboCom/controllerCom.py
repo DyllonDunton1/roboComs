@@ -25,6 +25,7 @@ arrowWidth = 50
 width = 1500
 height = 900
 
+
 """
 CONTROLS:
 
@@ -43,22 +44,70 @@ Auger Raise -> C
 
 
 class Pane(pygame.sprite.Sprite):
+    
     def __init__(self, text, xPos, yPos, typeDisp):
         super(Pane, self).__init__()
+        self.text = text
         self.font = pygame.font.SysFont('Arial', 16)
-        self.textsurf = self.font.render(text, True, (0,0,0))
+        self.textsurf = self.font.render(self.text, True, (0,0,0))
+        self.height = arrowWidth
+        self.width = arrowWidth
+        self.red = 255
+        self.green = 0
+        
         if (typeDisp == "Action"):
-            self.image = pygame.Surface((2*arrowWidth, arrowWidth))
-        if (typeDisp == "Arrow"):
-            self.image = pygame.Surface((arrowWidth, arrowWidth))
-        self.image.fill((255, 0, 0))
+            self.width = arrowWidth*2
+        self.image = pygame.Surface((self.width, self.height))
+        self.image.fill((self.red, self.green, 0))
+        self.xpos = xPos
+        self.ypos = yPos
         
         self.textx = (self.image.get_width() - self.textsurf.get_width())/2
         self.texty = (self.image.get_height() - self.textsurf.get_height())/2
         
         self.image.blit(self.textsurf, (self.textx,self.texty))
-        screen.blit(self.image, (xPos,yPos))
+        screen.blit(self.image, (self.xpos,self.ypos))
         
+    def setFill(self, active):
+        if (active):
+            self.red = 0
+            self.green = 255
+        else:
+            self.red = 255
+            self.green = 0
+    
+        self.image = pygame.Surface((self.width, self.height))
+        self.image.fill((self.red,self.green,0))    #red   
+        
+        self.textx = (self.image.get_width() - self.textsurf.get_width())/2
+        self.texty = (self.image.get_height() - self.textsurf.get_height())/2
+        
+        self.image.blit(self.textsurf, (self.textx,self.texty))
+        screen.blit(self.image, (self.xpos,self.ypos))      
+            
+    def setFillRG(self, r,g): 
+        self.red = r
+        self.green = g
+        self.image = pygame.Surface((self.width, self.height))
+        self.image.fill((self.red,self.green,0))  #new color
+        
+        self.textx = (self.image.get_width() - self.textsurf.get_width())/2
+        self.texty = (self.image.get_height() - self.textsurf.get_height())/2
+        
+        self.image.blit(self.textsurf, (self.textx,self.texty))
+        screen.blit(self.image, (self.xpos,self.ypos))
+        
+    def setText(self, newText):
+        self.text = newText
+        self.textsurf = self.font.render(newText, True, (0,0,0))
+        self.image = pygame.Surface((self.width, self.height))
+        self.image.fill((self.red,self.green,0))
+        
+        self.textx = (self.image.get_width() - self.textsurf.get_width())/2
+        self.texty = (self.image.get_height() - self.textsurf.get_height())/2
+        
+        self.image.blit(self.textsurf, (self.textx,self.texty))
+        screen.blit(self.image, (self.xpos,self.ypos))
 
 
 class ControllerPubSub(Node):
@@ -84,11 +133,82 @@ class ControllerPubSub(Node):
         self.AugerLower = False;
         self.AugerRaise = False;
         
+        self.roboBoomPos = 10
+        self.roboAugerSpin = False
+        self.roboAaugerHeight = 100
+        self.roboDoorLatch = True
+        self.roboWheelsLeft = False
+        self.roboWheelsRight = False
+        
+        self.augerTarget = "up"
+        self.boomTarget = 10
+        self.boomStart = 10
+        
+        self.boomMessage = "Boom Down"
+        self.augerMessage = "Auger Up"
+        
+        
     def listener_callback(self, msg):
         tf = msg.data
         tf_split = tf.split('*')
         if (tf_split[0] == 'tfData'):
+        
+            roboData_split = tf_split[1].split(' ')
+            self.roboBoomPos = roboData_split[0]
+            self.roboAugerSpin = roboData_split[1]
+            self.roboAugerHeight = roboData_split[2]
+            self.roboDoorLatch = roboData_split[3]
+            self.roboWheelsLeft = roboData_split[4]
+            self.roboWheelsRight = roboData_split[5]
+            
+            #set UI based on Data
+            
+            #augerSpin
+            if (self.roboAugerSpin == 'True'):
+                augerSpin.setFill(True)
+            else:
+                augerSpin.setFill(False)
+            
+            #augerHeight
+            max_height = 100
+            height = int(self.roboAugerHeight)
+            green = int((height*255)/max_height)
+            red = 255 - green
+            if (self.augerTarget == "down"):
+                red = green
+                green = 255 - green
+            augerHeight.setFillRG(red,green)
+            
+            
+            #augerBoom
+            distance_away = self.boomTarget - int(self.roboBoomPos)
+            distance_toTravel = self.boomTarget - self.boomStart
+            if (distance_toTravel == 0):
+            	distance_toTravel = 1
+            red = int((distance_away/distance_toTravel)*255)
+            green = 255 - red
+            boomPos.setFillRG(red, green)
+            
+
+            #doorLatch
+            if (self.roboDoorLatch == 'True'):
+                doorLatch.setFill(True)
+            else:
+                doorLatch.setFill(False)
+            
+            
             self.get_logger().info(tf_split[1])  
+            
+            #wheels
+            if (self.roboWheelsLeft == 'True'):
+                wheelsLeft.setFill(True)
+            else:
+                wheelsLeft.setFill(False)
+                
+            if (self.roboWheelsRight == 'True'):
+                wheelsRight.setFill(True)
+            else:
+                wheelsRight.setFill(False)    
          
 
     def timer_callback(self):
@@ -102,34 +222,60 @@ class ControllerPubSub(Node):
                 keys = pygame.key.get_pressed()
                 if keys[pygame.K_LEFT]:
                     self.left = True;
+                    leftKey.setFill(True)
                 if keys[pygame.K_RIGHT]:
                     self.right = True;
+                    rightKey.setFill(True)
                 if keys[pygame.K_UP]:
                     self.up = True;
+                    upKey.setFill(True)
                 if keys[pygame.K_DOWN]:
                     self.down = True;
+                    downKey.setFill(True)
                 if keys[pygame.K_q]:
                     self.BoomDown = True; 
+                    self.boomStart = int(self.roboBoomPos)
+                    self.boomTarget = 10
+                    self.boomMessage = "Boom Down"
+                    boomPos.setText(self.boomMessage)
                 if keys[pygame.K_w]:
                     self.BoomUp = True;
+                    self.boomStart = int(self.roboBoomPos)
+                    self.boomTarget = 90
+                    self.boomMessage = "Boom Up"
+                    boomPos.setText(self.boomMessage)
                 if keys[pygame.K_e]:
                     self.BoomDump = True;
+                    self.boomStart = int(self.roboBoomPos)
+                    self.boomTarget = 135
+                    self.boomMessage = "Boom Dump"
+                    boomPos.setText(self.boomMessage)
                 if keys[pygame.K_a]:
                     self.AugerSpin = True;
                 if keys[pygame.K_z]:
                     self.AugerLower = True;
+                    self.augerTarget = "down"
+                    self.augerMessage = "Auger Down"
+                    augerHeight.setText(self.augerMessage)
                 if keys[pygame.K_c]:
-                    self.AugerRaise = True;                       
+                    self.AugerRaise = True;   
+                    self.augerTarget = "up"  
+                    self.augerMessage = "Auger Up"    
+                    augerHeight.setText(self.augerMessage)              
             if event.type == pygame.KEYUP: #if a key has been UNpressed, turn that key off
                 keys = pygame.key.get_pressed()
                 if not keys[pygame.K_LEFT]:
                     self.left = False;
+                    leftKey.setFill(False)
                 if not keys[pygame.K_RIGHT]:
                     self.right = False;
+                    rightKey.setFill(False)
                 if not keys[pygame.K_UP]:
                     self.up = False;
+                    upKey.setFill(False)
                 if not keys[pygame.K_DOWN]:
-                    self.down = False;       
+                    self.down = False;     
+                    downKey.setFill(False)  
                 if not keys[pygame.K_q]:
                     self.BoomDown = False; 
                 if not keys[pygame.K_w]:
@@ -143,7 +289,7 @@ class ControllerPubSub(Node):
                 if not keys[pygame.K_c]:
                     self.AugerRaise = False;      
     	
-        
+        updateSprites()
         pygame.display.flip()
     	
     	#Build com string based on keyboard press data
@@ -158,7 +304,20 @@ class ControllerPubSub(Node):
         self.i += 1
             
     
+def updateSprites():
+    #Keys
+    rightKey.update()
+    leftKey.update()
+    upKey.update()
+    downKey.update()
     
+    #Remote side actions
+    augerSpin.update()
+    augerHeight.update()
+    boomPos.update()
+    wheelsLeft.update()
+    wheelsRight.update()
+    doorLatch.update()
 
 def initUIObjects():
     
@@ -209,7 +368,7 @@ def initUIObjects():
     
     #Remote side actions
     augerSpin = Pane('Auger Spin', augerSpinx, augerSpiny, 'Action')
-    augerHeight = Pane('Auger', augerHeightx, augerHeighty, 'Action')
+    augerHeight = Pane('Auger Up', augerHeightx, augerHeighty, 'Action')
     boomPos = Pane('Boom Down', boomPosx, boomPosy, 'Action')
     wheelsLeft = Pane('Left Wheels', wheelsLeftx, wheelsLefty, 'Action')
     wheelsRight = Pane('Right Wheels', wheelsRightx, wheelsRighty, 'Action')

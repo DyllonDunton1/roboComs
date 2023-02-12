@@ -18,6 +18,19 @@ from rclpy.node import Node
 from std_msgs.msg import String
 
 
+
+
+"""
+Publisher Data Format:
+
+BoomPos -> int (10,90,135) (degrees)
+Auger Spin -> bool (True/False)
+AugerHeight -> int (0,100)
+
+"""
+
+
+
 class RobotPubSub(Node):
 
     def __init__(self):
@@ -29,17 +42,20 @@ class RobotPubSub(Node):
         self.timer = self.create_timer(timer_period, self.timer_callback)
             
         self.subscription  # prevent unused variable warning
-        #self.servo = m.Controller()
-        #self.servo.setAccel(0,0)
-        #self.servo.setAccel(1,0)
-        #self.servo.setSpeed(0,0)
-        #self.servo.setSpeed(1,0)
         self.base = 6000
         self.max = 1000
         
+        self.boomPos = 10
+        self.augerSpin = False
+        self.augerHeight = 100
+        self.doorLatch = True
+        self.wheelRight = False
+        self.wheelLeft = False
+                
     def timer_callback(self):
         msgType = "tfData*"
-        com = msgType + "TEST TF DATA"
+        dataMessage = str(self.boomPos) + " " + str(self.augerSpin) + " " + str(self.augerHeight) + " " + str(self.doorLatch) + " " + str(self.wheelLeft) + " " + str(self.wheelLeft)
+        com = msgType + dataMessage
         msg = String()
         msg.data = com
         self.publisher_.publish(msg)
