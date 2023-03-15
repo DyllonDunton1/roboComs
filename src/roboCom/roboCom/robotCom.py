@@ -56,8 +56,8 @@ class RobotPubSub(Node):
         self.dataRecieved = ""
         self.dataSent = ""
         
-        self.arduino = serial.Serial('COM3', 9600)
-        time.sleep(2)
+        #self.arduino = serial.Serial('COM3', 9600)
+        #time.sleep(2)
                 
     def timer_callback(self):
         msgType = "tfData*"
@@ -72,7 +72,7 @@ class RobotPubSub(Node):
         keys = msg.data
         keys_split = keys.split('*')
         if (keys_split[0] == 'keyData'):
-    		
+            """
             self.dataRecieved = self.arduino.readLine()
             
             dataRecieved_split = self.dataRecieved.split(' ')
@@ -87,7 +87,9 @@ class RobotPubSub(Node):
             self.arduino.write(keys_split[1])
     	
             self.get_logger().info(self.dataRecieved)
-
+            """    
+            self.get_logger().info(keys_split[1])
+        
 
 def main(args=None):
     rclpy.init(args=args)
