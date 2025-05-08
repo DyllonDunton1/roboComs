@@ -4,6 +4,7 @@
 See a controller demo below, in addition to usage instructions and some more genral information.
 
 # Controller Interface Demo
+![robocom-demo](https://github.com/user-attachments/assets/9a207cae-b316-4d0c-af99-07674e16845c)
 
 
 
