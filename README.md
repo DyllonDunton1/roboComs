@@ -1,14 +1,16 @@
 # roboComs
-2023 Lunabotics communications
+2023 Lunabotics communications system for the University of Maine Black Bear Robotics robot. This code includes the controller-robot communications using ROS2 foxy, in addition to the code that talks to arduino controller on the robot which drives the motors. This also includes the camera capture on both the front and back of the robot, in addition to diagnostic information, and displaying it on the controller interface for the user. At the time of coding, the robot frame was not finished by the Mechy team. This is just the Software. 
+
+See a controller demo below, in addition to usage instructions and some more genral information.
+
+# Controller Interface Demo
 
 
-cd /home/dunto/roboComs && . install/setup.bash && ros2 run roboCom controller
-
-cd /home/dunto/roboComs && . install/setup.bash && ros2 run roboCom robot
 
 
 
 
+# ROS2 Foxy Node Setup
 
 publishers:
 remote->keys
@@ -23,10 +25,7 @@ bot->keys
 remote->cameras
 remote->TFData
 
-
-
-# roboComs  
-2023 Lunabotics communications  
+# 2023 Lunabotics communications Usage 
 
 To run this program, make sure that librealsense is installed on your brain system. The Github repo for Linux can be found here: https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md#installing-the-packages  
 
@@ -61,20 +60,9 @@ Finally, run the bash script:
 
 If successful, the controller GUI will be populated with camera feed  
 
-publishers:  
-remote->keys  
-bot->camera1  
-bot->camera2  
-bot->camera3  
-bot->TFData  
 
 
-subscribers:  
-bot->keys  
-remote->cameras  
-remote->TFData  
-
-General Controls:  
+# General Controls 
 
 Forward -> up arrow  
 Backward -> down arrow  
